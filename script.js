@@ -123,7 +123,7 @@ function sendEmail(name, email, message){
         Password: "everaldo30286139",
         To: "contato.everaldofjr@gmail.com",
         From: "contato.everaldofjr@gmail.com",
-        Subject: `${name} sent you a message`,
+        Subject: `${name} enviou-lhe uma mensagem`,
         Body: `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`,
     }).then((message)=> alert("Email enviado"))
 }
