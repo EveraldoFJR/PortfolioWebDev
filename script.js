@@ -52,8 +52,23 @@ function reveal(){
     }
 }
 
-// Javascript para receber email
 
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyBKcbU7o3ZbZQJkc2chux0MDoK-Uyu8ixw",
+    authDomain: "test-form-9a612.firebaseapp.com",
+    projectId: "test-form-9a612",
+    storageBucket: "test-form-9a612.appspot.com",
+    messagingSenderId: "499176560092",
+    appId: "1:499176560092:web:09e959e7bac55b5dbb6b19"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+// Reference contactInfo Collections
+let contactInfo = firebase.database().ref("infos");
+
+// Javascript para receber email
 document.querySelector(".contact-form").addEventListener("submit", submitForm);
 
 function submitForm(e){
@@ -66,9 +81,39 @@ function submitForm(e){
     saveContactInfo(name, email, message);
 
     document.querySelector(".contact-form").reset();
-
     sendEmail(name, email, message);
 }
+//Safe Infos to Firebase
+function saveContactInfo(name, email, message){
+    let newContactInfo = contactInfo.push();
+    
+    newContactInfo.set({
+        name: name,
+        email: email,
+        message: message,
+    });
+
+    retrieveInfos();
+}
+
+//Retrieve Infos
+function retrieveInfos(){
+    let ref = firebase.database().ref("infos");
+    ref.on("value", gotData);
+}
+function gotData(data) {
+    let info = data.val();
+    let keys = Object.keys(info);
+
+    for(let i = 0; i < keys.length; i++){
+        let infoData = keys[i]
+        let name = info[infoData].name
+        let email = info[infoData].email
+        let message = info[infoData].message
+        console.log(name, email, message);
+    }
+}
+
 
 // Send Email Info
 function sendEmail(name, email, message){
