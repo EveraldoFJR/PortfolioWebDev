@@ -123,5 +123,5 @@ function sendEmail(name, email, message){
         From: `${email}`,
         Subject: `${name} enviou-lhe uma mensagem`,
         Body: `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`,
-    }).then((message)=> alert("Email enviado"))
+    }).then((message)=> alert("Email enviado"));
 }
