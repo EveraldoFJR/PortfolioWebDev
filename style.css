@@ -670,3 +670,11 @@ body{
     transform:translateY(0px);
     opacity: 1; 
 }
+@media (max-width: 375px){
+    .brand{
+        display: none;
+    }
+    header.sticky{
+        padding: 25px 20px;
+    }
+}
