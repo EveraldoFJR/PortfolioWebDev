@@ -59,9 +59,9 @@ document.querySelector(".contact-form").addEventListener("submit", submitForm);
 function submitForm(e){
     e.preventDefault();
 
-    let name = document.querySelector(".Nome").nodeValue;
-    let email = document.querySelector(".E-mail").nodeValue;
-    let message = document.querySelector(".Mensagem").nodeValue;
+    let name = document.querySelector(".nome").value;
+    let email = document.querySelector(".email").value;
+    let message = document.querySelector(".mensagem").value;
 
     saveContactInfo(name, email, message);
 
