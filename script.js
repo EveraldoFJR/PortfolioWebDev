@@ -118,9 +118,7 @@ function gotData(data) {
 // Send Email Info
 function sendEmail(name, email, message){
     Email.send({
-        Host: "smtp.gmail.com", 
-        Username: "contato.everaldofjr@gmail.com",
-        Password: "everaldo30286139",
+        SecureToken: "ac53b242-4769-4c07-94e6-ca591d54eca7",
         To: "contato.everaldofjr@gmail.com",
         From: `${email}`,
         Subject: `${name} enviou-lhe uma mensagem`,
